@@ -5,6 +5,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:flutter_release_manager/services/build_service.dart';
 import 'package:flutter_release_manager/services/process_service.dart';
 import 'package:flutter_release_manager/services/flutter_sdk_service.dart';
+import 'package:flutter_release_manager/models/flutter_sdk_info.dart';
 
 class MockProcessService extends Mock implements ProcessService {}
 class MockFlutterSdkService extends Mock implements FlutterSdkService {}
