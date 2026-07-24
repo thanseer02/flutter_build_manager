@@ -1,12 +1,12 @@
 import 'package:meta/meta.dart';
 import 'dart:io';
 
-import '../../core/exceptions/release_manager_exception.dart';
-import '../../core/logging/logger.dart';
-import '../../domain/repositories/process_repository.dart';
+import '../exceptions/release_manager_exception.dart';
+import '../utils/logger.dart';
 
-/// Concrete implementation of [ProcessRepository] using `dart:io`.
-class ProcessRunner implements ProcessRepository {
+/// Defines the contract for OS process execution and provides
+/// a concrete implementation using `dart:io`.
+class ProcessService {
   /// The logger used to output debug information.
   final ReleaseManagerLogger _logger;
 
@@ -18,10 +18,10 @@ class ProcessRunner implements ProcessRepository {
     bool runInShell,
   }) _runProcess;
 
-  /// Creates a [ProcessRunner].
+  /// Creates a [ProcessService].
   ///
   /// The [processRunner] is mainly used for dependency injection during tests.
-  ProcessRunner({
+  ProcessService({
     required ReleaseManagerLogger logger,
     @visibleForTesting
     Future<ProcessResult> Function(
@@ -33,7 +33,11 @@ class ProcessRunner implements ProcessRepository {
   })  : _logger = logger,
         _runProcess = processRunner ?? Process.run;
 
-  @override
+  /// Runs an executable with the given [executable] name and [arguments].
+  ///
+  /// Optionally sets the [workingDirectory].
+  /// Returns the standard output of the process if successful.
+  /// Throws an exception if the process fails.
   Future<String> run(
     String executable,
     List<String> arguments, {

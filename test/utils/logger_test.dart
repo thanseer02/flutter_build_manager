@@ -1,4 +1,4 @@
-import 'package:flutter_release_manager/src/core/logging/logger.dart';
+import 'package:flutter_release_manager/utils/logger.dart';
 import 'package:mason_logger/mason_logger.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';

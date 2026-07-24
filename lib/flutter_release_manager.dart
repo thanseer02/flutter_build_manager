@@ -4,10 +4,14 @@
 /// by plugin developers extending `flutter_release_manager`.
 library flutter_release_manager;
 
-// Core
-export 'src/core/exceptions/release_manager_exception.dart';
-export 'src/core/logging/logger.dart';
-export 'src/core/plugins/release_plugin.dart';
+// Exceptions
+export 'exceptions/release_manager_exception.dart';
 
-// Domain
-export 'src/domain/repositories/process_repository.dart';
+// Utils
+export 'utils/logger.dart';
+
+// Models
+export 'models/release_plugin.dart';
+
+// Services
+export 'services/process_service.dart';

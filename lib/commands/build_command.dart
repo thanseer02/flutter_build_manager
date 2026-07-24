@@ -1,21 +1,21 @@
 import 'package:args/command_runner.dart';
 
-import '../../core/logging/logger.dart';
-import '../../domain/repositories/process_repository.dart';
+import '../utils/logger.dart';
+import '../services/process_service.dart';
 
 /// The `build` command for flutter_release_manager.
 ///
 /// This command handles triggering Flutter builds for various platforms.
 class BuildCommand extends Command<int> {
   final ReleaseManagerLogger _logger;
-  final ProcessRepository _processRepository;
+  final ProcessService _processService;
 
   /// Creates a [BuildCommand].
   BuildCommand({
     required ReleaseManagerLogger logger,
-    required ProcessRepository processRepository,
+    required ProcessService processService,
   })  : _logger = logger,
-        _processRepository = processRepository {
+        _processService = processService {
     argParser.addOption(
       'target',
       abbr: 't',
@@ -41,12 +41,8 @@ class BuildCommand extends Command<int> {
 
     _logger.info('Starting build for target: $target');
 
-    final progress = _logger.info; // Ideally mason_logger Progress could be used here
-
     try {
-      // In a real application, we would have a BuildUseCase in the domain layer.
-      // For now, we interact directly with the process repository.
-      await _processRepository.run('flutter', ['build', target]);
+      await _processService.run('flutter', ['build', target]);
       _logger.success('Build completed successfully for $target.');
       return 0;
     } catch (e) {

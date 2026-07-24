@@ -2,9 +2,9 @@ import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
 import 'package:mason_logger/mason_logger.dart';
 
-import '../core/logging/logger.dart';
-import '../domain/repositories/process_repository.dart';
-import 'commands/build_command.dart';
+import '../utils/logger.dart';
+import '../services/process_service.dart';
+import 'build_command.dart';
 
 /// The main CommandRunner for the flutter_release_manager CLI.
 class ReleaseManagerRunner extends CommandRunner<int> {
@@ -13,7 +13,7 @@ class ReleaseManagerRunner extends CommandRunner<int> {
   /// Creates a [ReleaseManagerRunner].
   ReleaseManagerRunner({
     required ReleaseManagerLogger logger,
-    required ProcessRepository processRepository,
+    required ProcessService processService,
   })  : _logger = logger,
         super(
           'flutter_release_manager',
@@ -35,7 +35,7 @@ class ReleaseManagerRunner extends CommandRunner<int> {
     addCommand(
       BuildCommand(
         logger: logger,
-        processRepository: processRepository,
+        processService: processService,
       ),
     );
   }
