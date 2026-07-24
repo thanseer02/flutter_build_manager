@@ -188,8 +188,7 @@ release_manager:
   build_counter:
     mode: daily
   organize_by:
-    year: true
-    month: true
+    date: true
     environment: true
 ```
 
@@ -199,7 +198,7 @@ release_manager:
 | `output_directory` | The root folder where all releases are saved. |
 | `template` | The dynamic filename template string. |
 | `build_counter.mode` | Either `daily` (resets at midnight) or `continuous`. |
-| `organize_by.*` | Toggles for generating nested folders (e.g. `release/2026/July/LIVE/`). |
+| `organize_by.date` | Toggles for generating a single date folder (e.g. `build/release/24_07_2026/LIVE/`). |
 
 ---
 
@@ -239,9 +238,9 @@ my_app/
   │    ├── state.json         # Tracks your active build counters
   │    └── logs/              # Daily execution logs
   │
-  ├── release/                # Your beautiful output directory
-  │    └── 2026/
-  │         └── July/
+  ├── build/
+  │    └── release/             # Your beautiful output directory
+  │         └── 24_07_2026/
   │              └── LIVE/
   │                   ├── DriveReplay_20260724_LIVE_001.apk
   │                   ├── DriveReplay_20260724_LIVE_001.apk.sha256
