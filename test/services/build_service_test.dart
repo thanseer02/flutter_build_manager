@@ -50,8 +50,10 @@ void main() {
                 version: '3.30.0',
                 channel: 'stable',
                 dartVersion: '3.7.0',
-                engineRevision: '12345',
+                engineVersion: '12345',
                 frameworkRevision: '12345',
+                isFvm: false,
+                isProjectFvm: false,
               ));
     }
 

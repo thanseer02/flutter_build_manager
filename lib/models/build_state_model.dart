@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 /// Represents the state of the build counters.
 class BuildStateModel {

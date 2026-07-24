@@ -1,7 +1,6 @@
 import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:args/command_runner.dart';
-import 'package:args/args.dart';
 
 import 'package:flutter_release_manager/commands/preview_command.dart';
 import 'package:flutter_release_manager/utils/logger.dart';
@@ -52,6 +51,7 @@ void main() {
       );
 
       runner = CommandRunner<int>('test', 'test runner')..addCommand(command);
+      registerFallbackValue(const TemplateVariables());
     });
 
     test('successfully outputs formatted preview data', () async {
