@@ -4,6 +4,7 @@ import 'package:yaml/yaml.dart';
 
 import '../utils/logger.dart';
 import '../exceptions/release_manager_exception.dart';
+import '../services/project_service.dart';
 
 /// The `init` command for flutter_release_manager.
 /// Initializes the workspace with release configurations.
@@ -34,25 +35,15 @@ class InitCommand extends Command<int> {
       }
     }
 
-    // Detect project name from pubspec.yaml
-    final pubspecFile = File('pubspec.yaml');
+    // Detect project name using ProjectService
     String projectName = 'unknown_project';
-    
-    if (!pubspecFile.existsSync()) {
-      throw const ReleaseManagerException('pubspec.yaml not found in the current directory. Are you in a Flutter project?');
-    }
-
     try {
-      final pubspecContent = pubspecFile.readAsStringSync();
-      final pubspecYaml = loadYaml(pubspecContent);
-      if (pubspecYaml is YamlMap && pubspecYaml.containsKey('name')) {
-        projectName = pubspecYaml['name'] as String;
-      } else {
-        throw const ReleaseManagerException('Could not find "name" field in pubspec.yaml.');
-      }
-    } catch (e) {
-      if (e is ReleaseManagerException) rethrow;
-      throw ReleaseManagerException('Failed to parse pubspec.yaml safely', details: e.toString());
+      final projectService = ProjectService();
+      final projectInfo = await projectService.getProjectInfo();
+      projectName = projectInfo.name;
+    } on ReleaseManagerException catch (e) {
+      _logger.warn('Could not detect project name automatically: ${e.message}');
+      _logger.info('Falling back to "unknown_project"');
     }
 
     final defaultConfig = '''
