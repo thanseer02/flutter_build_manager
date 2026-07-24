@@ -4,7 +4,15 @@ import 'package:mason_logger/mason_logger.dart';
 
 import '../utils/logger.dart';
 import '../services/process_service.dart';
+
 import 'build_command.dart';
+import 'init_command.dart';
+import 'preview_command.dart';
+import 'config_command.dart';
+import 'reset_command.dart';
+import 'version_command.dart';
+import 'clean_command.dart';
+import 'doctor_command.dart';
 
 /// The main CommandRunner for the flutter_release_manager CLI.
 class ReleaseManagerRunner extends CommandRunner<int> {
@@ -16,7 +24,7 @@ class ReleaseManagerRunner extends CommandRunner<int> {
     required ProcessService processService,
   })  : _logger = logger,
         super(
-          'flutter_release_manager',
+          'flutter_release',
           'A production-ready open-source Dart CLI package that manages Flutter releases.',
         ) {
     argParser
@@ -32,12 +40,14 @@ class ReleaseManagerRunner extends CommandRunner<int> {
         negatable: false,
       );
 
-    addCommand(
-      BuildCommand(
-        logger: logger,
-        processService: processService,
-      ),
-    );
+    addCommand(InitCommand(logger: logger));
+    addCommand(BuildCommand(logger: logger, processService: processService));
+    addCommand(PreviewCommand(logger: logger));
+    addCommand(ConfigCommand(logger: logger));
+    addCommand(ResetCommand(logger: logger));
+    addCommand(VersionCommand(logger: logger));
+    addCommand(CleanCommand(logger: logger, processService: processService));
+    addCommand(DoctorCommand(logger: logger, processService: processService));
   }
 
   @override
@@ -50,7 +60,7 @@ class ReleaseManagerRunner extends CommandRunner<int> {
       }
 
       if (argResults['version'] == true) {
-        _logger.info('flutter_release_manager version: 1.0.0');
+        _logger.info('flutter_release version: 1.0.0');
         return 0;
       }
 
