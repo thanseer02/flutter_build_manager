@@ -1,3 +1,6 @@
+## 1.0.17
+* Rewrite README to simplify documentation and emphasize `dart run` usage over global installation.
+
 ## 1.0.16
 * Rename executable command and configuration file from `flutter_release` to `flutter_build_manager`.
 
