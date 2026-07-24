@@ -114,7 +114,7 @@ class ReleaseManagerRunner extends CommandRunner<int> {
     addCommand(ConfigCommand(logger: logger));
     addCommand(ResetCommand(logger: logger));
     addCommand(VersionCommand(logger: logger, versionService: versionService));
-    addCommand(CleanCommand(logger: logger, processService: processService));
-    addCommand(DoctorCommand(logger: logger, processService: processService));
+    addCommand(CleanCommand(logger: logger, processService: processService, flutterSdkService: flutterSdkService));
+    addCommand(DoctorCommand(logger: logger, processService: processService, flutterSdkService: flutterSdkService));
   }
 }
