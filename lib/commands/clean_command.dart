@@ -1,6 +1,6 @@
 import 'package:args/command_runner.dart';
-import '../utils/logger.dart';
-import '../services/process_service.dart';
+import 'package:flutter_release_manager/utils/logger.dart';
+import 'package:flutter_release_manager/services/process_service.dart';
 
 /// The `clean` command for flutter_release_manager.
 class CleanCommand extends Command<int> {

@@ -1,7 +1,7 @@
 import 'package:args/command_runner.dart';
-import '../utils/logger.dart';
-import '../services/version_service.dart';
-import '../exceptions/release_manager_exception.dart';
+import 'package:flutter_release_manager/utils/logger.dart';
+import 'package:flutter_release_manager/services/version_service.dart';
+import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
 
 /// The `version` command for flutter_release_manager.
 class VersionCommand extends Command<int> {

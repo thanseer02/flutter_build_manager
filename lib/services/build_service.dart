@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import '../exceptions/release_manager_exception.dart';
-import '../models/build_result_model.dart';
+import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_release_manager/models/build_result_model.dart';
 import 'process_service.dart';
 
 /// Service responsible for executing and validating Flutter builds safely.

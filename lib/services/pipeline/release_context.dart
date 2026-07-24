@@ -1,7 +1,7 @@
-import '../models/project_model.dart';
-import '../models/version_model.dart';
-import '../models/environment_model.dart';
-import '../models/build_result_model.dart';
+import 'package:flutter_release_manager/services/models/project_model.dart';
+import 'package:flutter_release_manager/services/models/version_model.dart';
+import 'package:flutter_release_manager/services/models/environment_model.dart';
+import 'package:flutter_release_manager/services/models/build_result_model.dart';
 
 /// Holds the state of a release as it moves through the pipeline.
 class ReleaseContext {

@@ -1,5 +1,5 @@
 import 'package:args/args.dart';
-import '../utils/logger.dart';
+import 'package:flutter_release_manager/utils/logger.dart';
 
 /// Abstract base class for defining extensibility points (Plugins).
 ///

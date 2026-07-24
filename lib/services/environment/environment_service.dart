@@ -1,8 +1,8 @@
 import 'package:args/args.dart';
 
-import '../../exceptions/release_manager_exception.dart';
-import '../../models/environment_model.dart';
-import '../../utils/logger.dart';
+import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_release_manager/models/environment_model.dart';
+import 'package:flutter_release_manager/utils/logger.dart';
 import 'environment_detection_strategy.dart';
 
 import 'strategies/dart_define_detection_strategy.dart';

@@ -1,5 +1,5 @@
 import 'dart:io';
-import '../artifact_locator_strategy.dart';
+import 'package:flutter_release_manager/services/artifacts/artifact_locator_strategy.dart';
 
 class MappingLocatorStrategy implements ArtifactLocatorStrategy {
   @override

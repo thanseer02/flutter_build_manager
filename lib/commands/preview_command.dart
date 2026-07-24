@@ -3,13 +3,13 @@ import 'package:args/command_runner.dart';
 import 'package:yaml/yaml.dart';
 import 'package:intl/intl.dart';
 
-import '../utils/logger.dart';
-import '../services/project_service.dart';
-import '../services/version_service.dart';
-import '../services/environment/environment_service.dart';
-import '../services/build_counter_service.dart';
-import '../services/filename_template_service.dart';
-import '../exceptions/release_manager_exception.dart';
+import 'package:flutter_release_manager/utils/logger.dart';
+import 'package:flutter_release_manager/services/project_service.dart';
+import 'package:flutter_release_manager/services/version_service.dart';
+import 'package:flutter_release_manager/services/environment/environment_service.dart';
+import 'package:flutter_release_manager/services/build_counter_service.dart';
+import 'package:flutter_release_manager/services/filename_template_service.dart';
+import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
 
 /// The `preview` command for flutter_release_manager.
 class PreviewCommand extends Command<int> {

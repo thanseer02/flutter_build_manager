@@ -1,5 +1,5 @@
 import 'package:args/args.dart';
-import '../environment_detection_strategy.dart';
+import 'package:flutter_release_manager/services/environment/environment_detection_strategy.dart';
 
 /// Strategy to detect the environment from --dart-define=ENV=...
 class DartDefineDetectionStrategy implements EnvironmentDetectionStrategy {

@@ -1,5 +1,5 @@
 import 'package:args/command_runner.dart';
-import '../services/pipeline/release_pipeline_service.dart';
+import 'package:flutter_release_manager/services/pipeline/release_pipeline_service.dart';
 
 /// The `build` command for flutter_release_manager.
 ///

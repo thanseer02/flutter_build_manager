@@ -1,5 +1,5 @@
 import 'package:args/command_runner.dart';
-import '../utils/logger.dart';
+import 'package:flutter_release_manager/utils/logger.dart';
 
 /// The `reset` command for flutter_release_manager.
 class ResetCommand extends Command<int> {

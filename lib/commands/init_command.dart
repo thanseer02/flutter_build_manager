@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:yaml/yaml.dart';
 
-import '../utils/logger.dart';
-import '../exceptions/release_manager_exception.dart';
-import '../services/project_service.dart';
+import 'package:flutter_release_manager/utils/logger.dart';
+import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_release_manager/services/project_service.dart';
 
 /// The `init` command for flutter_release_manager.
 /// Initializes the workspace with release configurations.

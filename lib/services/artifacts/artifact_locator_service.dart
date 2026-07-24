@@ -1,4 +1,4 @@
-import '../../exceptions/release_manager_exception.dart';
+import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
 import 'artifact_locator_strategy.dart';
 import 'strategies/aab_locator_strategy.dart';
 import 'strategies/apk_locator_strategy.dart';

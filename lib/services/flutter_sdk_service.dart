@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:path/path.dart' as p;
 import 'package:yaml/yaml.dart';
 
-import '../exceptions/release_manager_exception.dart';
-import '../models/flutter_sdk_info.dart';
+import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_release_manager/models/flutter_sdk_info.dart';
 import 'process_service.dart';
 
 /// Service responsible for locating and validating the Flutter SDK.
