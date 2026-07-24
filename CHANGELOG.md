@@ -1,3 +1,6 @@
+## 1.0.19
+* Fix bug in `init` command where the default generated config template incorrectly used the unsupported `{build}` placeholder instead of `{counter}`.
+
 ## 1.0.18
 * Update README to fix build command syntax to explicitly include the mandatory `-t` target flag.
 
