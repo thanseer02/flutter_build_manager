@@ -16,7 +16,7 @@ class ReleaseDirectoryService {
   /// Creates the directory on disk if it does not exist.
   Future<String> getReleaseDirectory({required String environment, String? basePath}) async {
     final root = basePath ?? Directory.current.path;
-    String baseOutputDir = 'release';
+    String baseOutputDir = p.join('build', 'release');
     
     bool orgYear = true;
     bool orgMonth = true;

@@ -29,7 +29,7 @@ void main() {
       final year = DateFormat('yyyy').format(now);
       final month = DateFormat('MMMM').format(now);
       
-      final expectedPath = p.join(testDir, 'release', year, month, 'LIVE');
+      final expectedPath = p.join(testDir, 'build', 'release', year, month, 'LIVE');
       
       expect(path, equals(expectedPath));
       expect(Directory(path).existsSync(), isTrue);
