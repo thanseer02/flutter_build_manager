@@ -5,6 +5,10 @@ import 'package:mason_logger/mason_logger.dart';
 import '../utils/logger.dart';
 import '../services/process_service.dart';
 import '../services/version_service.dart';
+import '../services/project_service.dart';
+import '../services/environment/environment_service.dart';
+import '../services/build_counter_service.dart';
+import '../services/filename_template_service.dart';
 
 import 'build_command.dart';
 import 'init_command.dart';
@@ -39,48 +43,40 @@ class ReleaseManagerRunner extends CommandRunner<int> {
         'verbose',
         help: 'Enable verbose logging.',
         negatable: false,
+      )
+      ..addOption(
+        'env',
+        help: 'Manually specify the environment (e.g., DEV, UAT, PROD).',
+      )
+      ..addOption(
+        'flavor',
+        help: 'Manually specify the Flutter flavor.',
+      )
+      ..addMultiOption(
+        'dart-define',
+        help: 'Pass dart defines (e.g., --dart-define=ENV=PROD).',
       );
 
+    final projectService = ProjectService();
     final versionService = VersionService(logger: logger);
+    final environmentService = EnvironmentService(logger: logger);
+    final buildCounterService = BuildCounterService();
+    final filenameTemplateService = FilenameTemplateService();
 
     addCommand(InitCommand(logger: logger));
     addCommand(BuildCommand(logger: logger, processService: processService));
-    addCommand(PreviewCommand(logger: logger));
+    addCommand(PreviewCommand(
+      logger: logger,
+      projectService: projectService,
+      versionService: versionService,
+      environmentService: environmentService,
+      buildCounterService: buildCounterService,
+      filenameTemplateService: filenameTemplateService,
+    ));
     addCommand(ConfigCommand(logger: logger));
     addCommand(ResetCommand(logger: logger));
     addCommand(VersionCommand(logger: logger, versionService: versionService));
     addCommand(CleanCommand(logger: logger, processService: processService));
     addCommand(DoctorCommand(logger: logger, processService: processService));
-  }
-
-  @override
-  Future<int> run(Iterable<String> args) async {
-    try {
-      final argResults = parse(args);
-
-      if (argResults['verbose'] == true) {
-        _logger.level = Level.verbose;
-      }
-
-      if (argResults['version'] == true) {
-        _logger.info('flutter_release version: 1.0.0');
-        return 0;
-      }
-
-      return await runCommand(argResults) ?? 0;
-    } on FormatException catch (e) {
-      _logger.err(e.message);
-      _logger.info('');
-      _logger.info(usage);
-      return 64; // EX_USAGE
-    } on UsageException catch (e) {
-      _logger.err(e.message);
-      _logger.info('');
-      _logger.info(e.usage);
-      return 64; // EX_USAGE
-    } catch (e) {
-      _logger.err('An unexpected error occurred: $e');
-      return 1;
-    }
   }
 }
