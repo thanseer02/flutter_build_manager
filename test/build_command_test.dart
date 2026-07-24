@@ -3,27 +3,20 @@ import 'package:mocktail/mocktail.dart';
 import 'package:flutter_release_manager/commands/build_command.dart';
 import 'package:flutter_release_manager/utils/logger.dart';
 import 'package:flutter_release_manager/services/process_service.dart';
+import 'package:flutter_release_manager/services/pipeline/release_pipeline_service.dart';
 
-class MockLogger extends Mock implements ReleaseManagerLogger {}
-class MockProcessService extends Mock implements ProcessService {}
+class MockReleasePipelineService extends Mock implements ReleasePipelineService {}
 
 void main() {
   group('BuildCommand', () {
-    late MockLogger mockLogger;
-    late MockProcessService mockProcessService;
+    late MockReleasePipelineService mockPipelineService;
     late BuildCommand command;
 
     setUp(() {
-      mockLogger = MockLogger();
-      mockProcessService = MockProcessService();
-      
-      when(() => mockLogger.info(any())).thenReturn(null);
-      when(() => mockLogger.success(any())).thenReturn(null);
-      when(() => mockLogger.err(any())).thenReturn(null);
+      mockPipelineService = MockReleasePipelineService();
 
       command = BuildCommand(
-        logger: mockLogger,
-        processService: mockProcessService,
+        pipelineService: mockPipelineService,
       );
     });
 

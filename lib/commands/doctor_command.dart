@@ -2,16 +2,21 @@ import 'package:args/command_runner.dart';
 import 'package:flutter_release_manager/utils/logger.dart';
 import 'package:flutter_release_manager/services/process_service.dart';
 
+import 'package:flutter_release_manager/services/flutter_sdk_service.dart';
+
 /// The `doctor` command for flutter_release_manager.
 class DoctorCommand extends Command<int> {
   final ReleaseManagerLogger _logger;
   final ProcessService _processService;
+  final FlutterSdkService _flutterSdkService;
 
   DoctorCommand({
     required ReleaseManagerLogger logger,
     required ProcessService processService,
+    required FlutterSdkService flutterSdkService,
   })  : _logger = logger,
-        _processService = processService;
+        _processService = processService,
+        _flutterSdkService = flutterSdkService;
 
   @override
   String get name => 'doctor';
@@ -25,8 +30,9 @@ class DoctorCommand extends Command<int> {
     
     try {
       _logger.info('Checking flutter version...');
-      final flutterVersion = await _processService.run('flutter', ['--version']);
-      _logger.info(flutterVersion);
+      final sdkInfo = await _flutterSdkService.getSdkInfo();
+      final flutterVersion = await _processService.run(sdkInfo.executablePath, ['--version']);
+      _logger.info(flutterVersion.stdout.toString());
       
       _logger.success('Doctor check passed.');
       return 0;

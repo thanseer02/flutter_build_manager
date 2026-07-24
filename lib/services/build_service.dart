@@ -4,12 +4,18 @@ import 'package:flutter_release_manager/exceptions/release_manager_exception.dar
 import 'package:flutter_release_manager/models/build_result_model.dart';
 import 'process_service.dart';
 
+import 'package:flutter_release_manager/services/flutter_sdk_service.dart';
+
 /// Service responsible for executing and validating Flutter builds safely.
 class BuildService {
   final ProcessService _processService;
+  final FlutterSdkService _flutterSdkService;
 
-  BuildService({required ProcessService processService})
-      : _processService = processService;
+  BuildService({
+    required ProcessService processService,
+    required FlutterSdkService flutterSdkService,
+  })  : _processService = processService,
+        _flutterSdkService = flutterSdkService;
 
   /// Validates the environment, configuration, and project, then executes the build.
   /// 
