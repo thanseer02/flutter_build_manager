@@ -140,7 +140,7 @@ class ReleasePipelineService {
       // Very basic read just for template, in real code use config service
       final content = configFile.readAsStringSync();
       if (content.contains('template:')) {
-        final match = RegExp(r'template:\s*"?([^"\n]+)"?').firstMatch(content);
+        final match = RegExp(r'\btemplate:\s*"?([^"\r\n]+)"?').firstMatch(content);
         if (match != null) {
           template = match.group(1)!;
         }

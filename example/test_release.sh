@@ -23,9 +23,9 @@ fvm dart run flutter_release_manager:flutter_release build --target apk
 echo "=========================================="
 echo "Verification"
 echo "=========================================="
-if ls .build_release/*.apk 1> /dev/null 2>&1; then
+if find .build_release -type f -name "*.apk" | grep -q .; then
     echo "✅ SUCCESS: Release APK generated successfully!"
-    ls -lh .build_release/*.apk
+    find .build_release -type f -name "*.apk" -exec ls -lh {} +
 else
     echo "❌ FAILURE: Release APK not found in .build_release/"
     exit 1
