@@ -1,0 +1,34 @@
+release_manager:
+  project_name: "Release Manager Example"
+  output_directory: ".build_release"
+  
+  environment:
+    source: "DEV"
+    strategies:
+      - arg_parser
+      - flutter_define
+      - flavor_name
+      - default_value
+      
+  filename_template:
+    template: "{project}_{version}_{env}_{counter}"
+    clean_illegal_characters: true
+    
+  counter:
+    enabled: true
+    state_file: ".build_release/.build_counter.json"
+    reset_daily: true
+    format: "000"
+    
+  metadata:
+    enabled: true
+    include_git_branch: true
+    include_git_commit: true
+    
+  checksum:
+    enabled: true
+    algorithm: "sha256"
+    
+  fvm:
+    enabled: true
+    use_project_sdk: true

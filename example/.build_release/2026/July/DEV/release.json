@@ -1,0 +1,15 @@
+{
+  "projectName": "release_manager_example",
+  "version": "1.0.0",
+  "flutterBuildNumber": "1",
+  "environment": "DEV",
+  "counter": "001",
+  "generatedFilename": "template-.apk",
+  "artifactType": "apk",
+  "artifactSize": 42445482,
+  "generatedTime": "2026-07-24T09:18:44Z",
+  "flutterVersion": "Detected via build",
+  "dartVersion": "3.11.0",
+  "operatingSystem": "macos",
+  "releaseDirectory": "/Users/saikrishna/Documents/Pluigins/flutter_release_manager/example/.build_release/2026/July/DEV"
+}
