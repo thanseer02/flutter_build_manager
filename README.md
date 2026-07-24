@@ -45,13 +45,32 @@ Whether you are an indie developer aiming for better organization or an enterpri
 
 You can install `flutter_release_manager` either globally on your machine (recommended for CLI usage) or directly into your project as a dev dependency.
 
-### Recommended: Global Installation
+### Installation from GitHub
+
+#### Global Activation (Recommended)
+
+```bash
+dart pub global activate -sgit https://github.com/thanseer02/flutter_build_manager
+```
+
+#### Add to an existing Flutter project
+
+```yaml
+dependencies:
+  flutter_release_manager:
+    git:
+      url: https://github.com/thanseer02/flutter_build_manager
+```
+
+### Installation from Pub.dev (When Published)
+
+#### Global Installation
 
 ```bash
 dart pub global activate flutter_release_manager
 ```
 
-### Alternative: Project Dependency
+#### Project Dependency
 
 ```bash
 flutter pub add dev:flutter_release_manager
