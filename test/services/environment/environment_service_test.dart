@@ -2,11 +2,11 @@ import 'package:args/args.dart';
 import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:flutter_release_manager/services/environment/environment_service.dart';
-import 'package:flutter_release_manager/services/environment/environment_detection_strategy.dart';
-import 'package:flutter_release_manager/models/environment_model.dart';
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
-import 'package:flutter_release_manager/utils/logger.dart';
+import 'package:flutter_build_manager/services/environment/environment_service.dart';
+import 'package:flutter_build_manager/services/environment/environment_detection_strategy.dart';
+import 'package:flutter_build_manager/models/environment_model.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/utils/logger.dart';
 
 class MockLogger extends Mock implements ReleaseManagerLogger {}
 class MockArgResults extends Mock implements ArgResults {}

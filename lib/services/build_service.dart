@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
-import 'package:flutter_release_manager/models/build_result_model.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/models/build_result_model.dart';
 import 'process_service.dart';
 
-import 'package:flutter_release_manager/services/flutter_sdk_service.dart';
+import 'package:flutter_build_manager/services/flutter_sdk_service.dart';
 
 /// Service responsible for executing and validating Flutter builds safely.
 class BuildService {

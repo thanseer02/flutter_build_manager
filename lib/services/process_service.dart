@@ -1,8 +1,8 @@
 import 'package:meta/meta.dart';
 import 'dart:io';
 
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
-import 'package:flutter_release_manager/utils/logger.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/utils/logger.dart';
 
 /// Defines the contract for OS process execution and provides
 /// a concrete implementation using `dart:io`.

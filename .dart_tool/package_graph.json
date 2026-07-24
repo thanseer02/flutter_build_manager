@@ -1,11 +1,11 @@
 {
   "roots": [
-    "flutter_release_manager"
+    "flutter_build_manager"
   ],
   "packages": [
     {
-      "name": "flutter_release_manager",
-      "version": "1.0.0",
+      "name": "flutter_build_manager",
+      "version": "1.0.14",
       "dependencies": [
         "args",
         "convert",

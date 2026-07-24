@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
 
 /// The variables that can be injected into a filename template.
 class TemplateVariables {

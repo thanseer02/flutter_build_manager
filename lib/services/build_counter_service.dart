@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:intl/intl.dart';
-import 'package:flutter_release_manager/models/build_state_model.dart';
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/models/build_state_model.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
 
 /// Service responsible for managing daily incrementing release numbers per environment.
 class BuildCounterService {

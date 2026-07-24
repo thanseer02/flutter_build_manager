@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:test/test.dart';
 import 'package:path/path.dart' as p;
-import 'package:flutter_release_manager/services/artifacts/artifact_rename_service.dart';
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/services/artifacts/artifact_rename_service.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
 
 void main() {
   group('ArtifactRenameService', () {

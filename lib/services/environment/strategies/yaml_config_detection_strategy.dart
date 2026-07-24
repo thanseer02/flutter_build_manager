@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:yaml/yaml.dart';
 
-import 'package:flutter_release_manager/services/environment/environment_detection_strategy.dart';
+import 'package:flutter_build_manager/services/environment/environment_detection_strategy.dart';
 
 /// Strategy to detect the environment from the flutter_release.yaml configuration.
 class YamlConfigDetectionStrategy implements EnvironmentDetectionStrategy {

@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:test/test.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_release_manager/services/build_counter_service.dart';
+import 'package:flutter_build_manager/services/build_counter_service.dart';
 
 void main() {
   group('BuildCounterService', () {

@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:path/path.dart' as p;
 
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
 
 /// Service responsible for renaming build artifacts without overwriting existing files.
 class ArtifactRenameService {

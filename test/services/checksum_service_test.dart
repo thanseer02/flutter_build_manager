@@ -3,8 +3,8 @@ import 'package:test/test.dart';
 import 'package:path/path.dart' as p;
 import 'package:crypto/crypto.dart';
 
-import 'package:flutter_release_manager/services/checksum_service.dart';
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/services/checksum_service.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
 
 void main() {
   group('ChecksumService', () {

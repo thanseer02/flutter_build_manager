@@ -2,11 +2,11 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:yaml/yaml.dart';
 
-import 'package:flutter_release_manager/utils/logger.dart';
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
-import 'package:flutter_release_manager/services/project_service.dart';
+import 'package:flutter_build_manager/utils/logger.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/services/project_service.dart';
 
-/// The `init` command for flutter_release_manager.
+/// The `init` command for flutter_build_manager.
 /// Initializes the workspace with release configurations.
 class InitCommand extends Command<int> {
   final ReleaseManagerLogger _logger;

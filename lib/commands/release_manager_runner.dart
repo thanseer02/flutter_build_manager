@@ -1,21 +1,21 @@
 import 'package:args/command_runner.dart';
 
-import 'package:flutter_release_manager/utils/logger.dart';
-import 'package:flutter_release_manager/services/process_service.dart';
-import 'package:flutter_release_manager/services/version_service.dart';
-import 'package:flutter_release_manager/services/project_service.dart';
-import 'package:flutter_release_manager/services/environment/environment_service.dart';
-import 'package:flutter_release_manager/services/build_counter_service.dart';
-import 'package:flutter_release_manager/services/filename_template_service.dart';
-import 'package:flutter_release_manager/services/flutter_sdk_service.dart';
-import 'package:flutter_release_manager/services/build_service.dart';
-import 'package:flutter_release_manager/services/artifacts/artifact_locator_service.dart';
-import 'package:flutter_release_manager/services/artifacts/artifact_rename_service.dart';
-import 'package:flutter_release_manager/services/release_directory_service.dart';
-import 'package:flutter_release_manager/services/metadata_service.dart';
-import 'package:flutter_release_manager/services/checksum_service.dart';
-import 'package:flutter_release_manager/services/logger_service.dart';
-import 'package:flutter_release_manager/services/pipeline/release_pipeline_service.dart';
+import 'package:flutter_build_manager/utils/logger.dart';
+import 'package:flutter_build_manager/services/process_service.dart';
+import 'package:flutter_build_manager/services/version_service.dart';
+import 'package:flutter_build_manager/services/project_service.dart';
+import 'package:flutter_build_manager/services/environment/environment_service.dart';
+import 'package:flutter_build_manager/services/build_counter_service.dart';
+import 'package:flutter_build_manager/services/filename_template_service.dart';
+import 'package:flutter_build_manager/services/flutter_sdk_service.dart';
+import 'package:flutter_build_manager/services/build_service.dart';
+import 'package:flutter_build_manager/services/artifacts/artifact_locator_service.dart';
+import 'package:flutter_build_manager/services/artifacts/artifact_rename_service.dart';
+import 'package:flutter_build_manager/services/release_directory_service.dart';
+import 'package:flutter_build_manager/services/metadata_service.dart';
+import 'package:flutter_build_manager/services/checksum_service.dart';
+import 'package:flutter_build_manager/services/logger_service.dart';
+import 'package:flutter_build_manager/services/pipeline/release_pipeline_service.dart';
 
 import 'build_command.dart';
 import 'init_command.dart';
@@ -26,7 +26,7 @@ import 'version_command.dart';
 import 'clean_command.dart';
 import 'doctor_command.dart';
 
-/// The main CommandRunner for the flutter_release_manager CLI.
+/// The main CommandRunner for the flutter_build_manager CLI.
 class ReleaseManagerRunner extends CommandRunner<int> {
   /// Creates a [ReleaseManagerRunner].
   ReleaseManagerRunner({

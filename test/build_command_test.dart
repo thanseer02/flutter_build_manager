@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:flutter_release_manager/commands/build_command.dart';
-import 'package:flutter_release_manager/services/pipeline/release_pipeline_service.dart';
+import 'package:flutter_build_manager/commands/build_command.dart';
+import 'package:flutter_build_manager/services/pipeline/release_pipeline_service.dart';
 
 class MockReleasePipelineService extends Mock implements ReleasePipelineService {}
 

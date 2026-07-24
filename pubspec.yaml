@@ -1,7 +1,7 @@
-name: flutter_release_manager
+name: flutter_build_manager
 description: A production-ready open-source Dart CLI package that manages Flutter releases for macOS, Windows, Linux, iOS, and Android.
 version: 1.0.14
-homepage: https://github.com/thanseer02/flutter_release_manager
+homepage: https://github.com/thanseer02/flutter_build_manager
 
 environment:
   sdk: ^3.7.0

@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:test/test.dart';
 
-import 'package:flutter_release_manager/services/artifacts/artifact_locator_service.dart';
-import 'package:flutter_release_manager/services/artifacts/artifact_locator_strategy.dart';
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/services/artifacts/artifact_locator_service.dart';
+import 'package:flutter_build_manager/services/artifacts/artifact_locator_strategy.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
 
 class MockCustomLocator implements ArtifactLocatorStrategy {
   @override

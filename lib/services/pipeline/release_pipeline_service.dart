@@ -3,21 +3,21 @@ import 'package:args/args.dart';
 import 'package:path/path.dart' as p;
 import 'package:intl/intl.dart';
 
-import 'package:flutter_release_manager/utils/logger.dart';
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
-import 'package:flutter_release_manager/models/release_metadata_model.dart';
-import 'package:flutter_release_manager/services/project_service.dart';
-import 'package:flutter_release_manager/services/version_service.dart';
-import 'package:flutter_release_manager/services/environment/environment_service.dart';
-import 'package:flutter_release_manager/services/build_counter_service.dart';
-import 'package:flutter_release_manager/services/filename_template_service.dart';
-import 'package:flutter_release_manager/services/build_service.dart';
-import 'package:flutter_release_manager/services/artifacts/artifact_locator_service.dart';
-import 'package:flutter_release_manager/services/artifacts/artifact_rename_service.dart';
-import 'package:flutter_release_manager/services/release_directory_service.dart';
-import 'package:flutter_release_manager/services/metadata_service.dart';
-import 'package:flutter_release_manager/services/checksum_service.dart';
-import 'package:flutter_release_manager/services/logger_service.dart';
+import 'package:flutter_build_manager/utils/logger.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/models/release_metadata_model.dart';
+import 'package:flutter_build_manager/services/project_service.dart';
+import 'package:flutter_build_manager/services/version_service.dart';
+import 'package:flutter_build_manager/services/environment/environment_service.dart';
+import 'package:flutter_build_manager/services/build_counter_service.dart';
+import 'package:flutter_build_manager/services/filename_template_service.dart';
+import 'package:flutter_build_manager/services/build_service.dart';
+import 'package:flutter_build_manager/services/artifacts/artifact_locator_service.dart';
+import 'package:flutter_build_manager/services/artifacts/artifact_rename_service.dart';
+import 'package:flutter_build_manager/services/release_directory_service.dart';
+import 'package:flutter_build_manager/services/metadata_service.dart';
+import 'package:flutter_build_manager/services/checksum_service.dart';
+import 'package:flutter_build_manager/services/logger_service.dart';
 import 'release_context.dart';
 
 /// Orchestrates the entire release pipeline safely.

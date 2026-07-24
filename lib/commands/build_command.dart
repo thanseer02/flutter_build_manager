@@ -1,7 +1,7 @@
 import 'package:args/command_runner.dart';
-import 'package:flutter_release_manager/services/pipeline/release_pipeline_service.dart';
+import 'package:flutter_build_manager/services/pipeline/release_pipeline_service.dart';
 
-/// The `build` command for flutter_release_manager.
+/// The `build` command for flutter_build_manager.
 ///
 /// This command handles triggering Flutter builds for various platforms.
 class BuildCommand extends Command<int> {

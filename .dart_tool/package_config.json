@@ -326,7 +326,7 @@
       "languageVersion": "3.4"
     },
     {
-      "name": "flutter_release_manager",
+      "name": "flutter_build_manager",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.7"

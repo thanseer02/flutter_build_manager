@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:test/test.dart';
 import 'package:path/path.dart' as p;
 import 'package:intl/intl.dart';
-import 'package:flutter_release_manager/services/release_directory_service.dart';
+import 'package:flutter_build_manager/services/release_directory_service.dart';
 
 void main() {
   group('ReleaseDirectoryService', () {

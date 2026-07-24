@@ -35,7 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
-  flutter_release_manager:
+  flutter_build_manager:
     path: ../
 
 dev_dependencies:

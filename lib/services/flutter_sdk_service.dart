@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:path/path.dart' as p;
 import 'package:yaml/yaml.dart';
 
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
-import 'package:flutter_release_manager/models/flutter_sdk_info.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/models/flutter_sdk_info.dart';
 import 'process_service.dart';
 
 /// Service responsible for locating and validating the Flutter SDK.
@@ -113,7 +113,7 @@ class FlutterSdkService {
       if (major < 3 || (major == 3 && minor < 30)) {
         throw ReleaseManagerException(
           'Incompatible Flutter version detected ($version).',
-          details: 'flutter_release_manager requires Flutter 3.30.0 or newer.',
+          details: 'flutter_build_manager requires Flutter 3.30.0 or newer.',
         );
       }
     } catch (e) {

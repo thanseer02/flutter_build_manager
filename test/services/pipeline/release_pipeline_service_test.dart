@@ -3,26 +3,26 @@ import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:path/path.dart' as p;
 
-import 'package:flutter_release_manager/utils/logger.dart';
-import 'package:flutter_release_manager/services/pipeline/release_pipeline_service.dart';
-import 'package:flutter_release_manager/services/project_service.dart';
-import 'package:flutter_release_manager/services/version_service.dart';
-import 'package:flutter_release_manager/services/environment/environment_service.dart';
-import 'package:flutter_release_manager/services/build_counter_service.dart';
-import 'package:flutter_release_manager/services/filename_template_service.dart';
-import 'package:flutter_release_manager/services/build_service.dart';
-import 'package:flutter_release_manager/services/artifacts/artifact_locator_service.dart';
-import 'package:flutter_release_manager/services/artifacts/artifact_rename_service.dart';
-import 'package:flutter_release_manager/services/release_directory_service.dart';
-import 'package:flutter_release_manager/services/metadata_service.dart';
-import 'package:flutter_release_manager/services/checksum_service.dart';
-import 'package:flutter_release_manager/services/logger_service.dart';
+import 'package:flutter_build_manager/utils/logger.dart';
+import 'package:flutter_build_manager/services/pipeline/release_pipeline_service.dart';
+import 'package:flutter_build_manager/services/project_service.dart';
+import 'package:flutter_build_manager/services/version_service.dart';
+import 'package:flutter_build_manager/services/environment/environment_service.dart';
+import 'package:flutter_build_manager/services/build_counter_service.dart';
+import 'package:flutter_build_manager/services/filename_template_service.dart';
+import 'package:flutter_build_manager/services/build_service.dart';
+import 'package:flutter_build_manager/services/artifacts/artifact_locator_service.dart';
+import 'package:flutter_build_manager/services/artifacts/artifact_rename_service.dart';
+import 'package:flutter_build_manager/services/release_directory_service.dart';
+import 'package:flutter_build_manager/services/metadata_service.dart';
+import 'package:flutter_build_manager/services/checksum_service.dart';
+import 'package:flutter_build_manager/services/logger_service.dart';
 
-import 'package:flutter_release_manager/models/project_model.dart';
-import 'package:flutter_release_manager/models/version_model.dart';
-import 'package:flutter_release_manager/models/environment_model.dart';
-import 'package:flutter_release_manager/models/build_result_model.dart';
-import 'package:flutter_release_manager/models/release_metadata_model.dart';
+import 'package:flutter_build_manager/models/project_model.dart';
+import 'package:flutter_build_manager/models/version_model.dart';
+import 'package:flutter_build_manager/models/environment_model.dart';
+import 'package:flutter_build_manager/models/build_result_model.dart';
+import 'package:flutter_build_manager/models/release_metadata_model.dart';
 
 class MockReleaseManagerLogger extends Mock implements ReleaseManagerLogger {}
 class MockProjectService extends Mock implements ProjectService {}

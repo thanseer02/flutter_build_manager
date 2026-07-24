@@ -1,12 +1,12 @@
-# flutter_release_manager
+# flutter_build_manager
 
-[![pub package](https://img.shields.io/pub/v/flutter_release_manager.svg)](https://pub.dev/packages/flutter_release_manager)
+[![pub package](https://img.shields.io/pub/v/flutter_build_manager.svg)](https://pub.dev/packages/flutter_build_manager)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Flutter](https://img.shields.io/badge/Flutter-3.30.0%2B-blue.svg)](https://flutter.dev)
 
 A production-ready Flutter Release Manager that automatically builds, renames, organizes, and tracks your Flutter release artifacts natively for macOS, Windows, Linux, iOS, and Android.
 
-## Why use flutter_release_manager?
+## Why use flutter_build_manager?
 
 Managing Flutter releases manually is tedious, error-prone, and messy. Developers often struggle with:
 - Forgetting to bump version numbers.
@@ -15,7 +15,7 @@ Managing Flutter releases manually is tedious, error-prone, and messy. Developer
 - Inconsistent naming conventions across team members.
 - Manually generating checksums and metadata for CI/CD.
 
-**`flutter_release_manager` solves all of these problems.** It acts as an automated pipeline that strictly enforces a naming convention, dynamically tracks build counters across different environments (DEV, QA, LIVE), safely organizes output files into dated directories, and produces robust metadata and SHA256 checksums—all with a single command. 
+**`flutter_build_manager` solves all of these problems.** It acts as an automated pipeline that strictly enforces a naming convention, dynamically tracks build counters across different environments (DEV, QA, LIVE), safely organizes output files into dated directories, and produces robust metadata and SHA256 checksums—all with a single command. 
 
 Whether you are an indie developer aiming for better organization or an enterprise team orchestrating complex CI/CD pipelines, this package brings maturity and stability to your Flutter release process.
 
@@ -43,7 +43,7 @@ Whether you are an indie developer aiming for better organization or an enterpri
 
 ## Installation
 
-You can install `flutter_release_manager` either globally on your machine (recommended for CLI usage) or directly into your project as a dev dependency.
+You can install `flutter_build_manager` either globally on your machine (recommended for CLI usage) or directly into your project as a dev dependency.
 
 ### Installation from GitHub
 
@@ -57,7 +57,7 @@ dart pub global activate -sgit https://github.com/thanseer02/flutter_build_manag
 
 ```yaml
 dependencies:
-  flutter_release_manager:
+  flutter_build_manager:
     git:
       url: https://github.com/thanseer02/flutter_build_manager
 ```
@@ -67,13 +67,13 @@ dependencies:
 #### Global Installation
 
 ```bash
-dart pub global activate flutter_release_manager
+dart pub global activate flutter_build_manager
 ```
 
 #### Project Dependency
 
 ```bash
-flutter pub add dev:flutter_release_manager
+flutter pub add dev:flutter_build_manager
 ```
 
 ---
@@ -134,7 +134,7 @@ graph TD
 
 ## Using with Existing Flutter Projects
 
-Integrating `flutter_release_manager` into a legacy project is completely non-destructive and requires zero code changes.
+Integrating `flutter_build_manager` into a legacy project is completely non-destructive and requires zero code changes.
 
 1. **Open project**: Navigate to your Flutter project root in your terminal.
 2. **Run init**: Execute `flutter_release init`.
@@ -146,7 +146,7 @@ Integrating `flutter_release_manager` into a legacy project is completely non-de
 
 ## Using with FVM
 
-`flutter_release_manager` has first-class support for Flutter Version Management (FVM).
+`flutter_build_manager` has first-class support for Flutter Version Management (FVM).
 
 If your project looks like this:
 ```

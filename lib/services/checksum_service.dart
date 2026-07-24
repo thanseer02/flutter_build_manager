@@ -4,7 +4,7 @@ import 'package:convert/convert.dart';
 import 'package:path/path.dart' as p;
 import 'package:intl/intl.dart';
 
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
 
 /// Service responsible for generating SHA256 checksums for artifacts.
 class ChecksumService {

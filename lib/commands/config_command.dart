@@ -1,7 +1,7 @@
 import 'package:args/command_runner.dart';
-import 'package:flutter_release_manager/utils/logger.dart';
+import 'package:flutter_build_manager/utils/logger.dart';
 
-/// The `config` command for flutter_release_manager.
+/// The `config` command for flutter_build_manager.
 class ConfigCommand extends Command<int> {
   final ReleaseManagerLogger _logger;
 
@@ -11,7 +11,7 @@ class ConfigCommand extends Command<int> {
   String get name => 'config';
 
   @override
-  String get description => 'Manages the flutter_release_manager configuration.';
+  String get description => 'Manages the flutter_build_manager configuration.';
 
   @override
   Future<int> run() async {

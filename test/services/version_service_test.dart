@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:flutter_release_manager/services/version_service.dart';
-import 'package:flutter_release_manager/utils/logger.dart';
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
-import 'package:flutter_release_manager/models/version_model.dart';
+import 'package:flutter_build_manager/services/version_service.dart';
+import 'package:flutter_build_manager/utils/logger.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/models/version_model.dart';
 
 class MockLogger extends Mock implements ReleaseManagerLogger {}
 

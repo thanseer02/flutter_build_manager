@@ -2,16 +2,16 @@ import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:args/command_runner.dart';
 
-import 'package:flutter_release_manager/commands/preview_command.dart';
-import 'package:flutter_release_manager/utils/logger.dart';
-import 'package:flutter_release_manager/services/project_service.dart';
-import 'package:flutter_release_manager/services/version_service.dart';
-import 'package:flutter_release_manager/services/environment/environment_service.dart';
-import 'package:flutter_release_manager/services/build_counter_service.dart';
-import 'package:flutter_release_manager/services/filename_template_service.dart';
-import 'package:flutter_release_manager/models/project_model.dart';
-import 'package:flutter_release_manager/models/version_model.dart';
-import 'package:flutter_release_manager/models/environment_model.dart';
+import 'package:flutter_build_manager/commands/preview_command.dart';
+import 'package:flutter_build_manager/utils/logger.dart';
+import 'package:flutter_build_manager/services/project_service.dart';
+import 'package:flutter_build_manager/services/version_service.dart';
+import 'package:flutter_build_manager/services/environment/environment_service.dart';
+import 'package:flutter_build_manager/services/build_counter_service.dart';
+import 'package:flutter_build_manager/services/filename_template_service.dart';
+import 'package:flutter_build_manager/models/project_model.dart';
+import 'package:flutter_build_manager/models/version_model.dart';
+import 'package:flutter_build_manager/models/environment_model.dart';
 
 class MockLogger extends Mock implements ReleaseManagerLogger {}
 class MockProjectService extends Mock implements ProjectService {}

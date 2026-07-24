@@ -1,9 +1,9 @@
 import 'package:args/args.dart';
-import 'package:flutter_release_manager/utils/logger.dart';
+import 'package:flutter_build_manager/utils/logger.dart';
 
 /// Abstract base class for defining extensibility points (Plugins).
 ///
-/// Any future extensions to the flutter_release_manager should implement
+/// Any future extensions to the flutter_build_manager should implement
 /// this interface and register themselves with the CLI.
 abstract class ReleasePlugin {
   /// The unique name of the plugin.

@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:test/test.dart';
-import 'package:flutter_release_manager/services/project_service.dart';
-import 'package:flutter_release_manager/exceptions/release_manager_exception.dart';
-import 'package:flutter_release_manager/models/project_model.dart';
+import 'package:flutter_build_manager/services/project_service.dart';
+import 'package:flutter_build_manager/exceptions/release_manager_exception.dart';
+import 'package:flutter_build_manager/models/project_model.dart';
 
 void main() {
   group('ProjectService', () {
