@@ -26,10 +26,9 @@ void main() {
       final path = await service.getReleaseDirectory(environment: 'LIVE', basePath: testDir);
       
       final now = DateTime.now();
-      final year = DateFormat('yyyy').format(now);
-      final month = DateFormat('MMMM').format(now);
+      final dateStr = DateFormat('dd_MM_yyyy').format(now);
       
-      final expectedPath = p.join(testDir, 'build', 'release', year, month, 'LIVE');
+      final expectedPath = p.join(testDir, 'build', 'release', dateStr, 'LIVE');
       
       expect(path, equals(expectedPath));
       expect(Directory(path).existsSync(), isTrue);
@@ -54,8 +53,7 @@ release_manager:
 release_manager:
   output_directory: my_releases
   organize_by:
-    year: false
-    month: false
+    date: false
     environment: true
 ''');
 
@@ -73,8 +71,7 @@ release_manager:
 release_manager:
   output_directory: flat_out
   organize_by:
-    year: false
-    month: false
+    date: false
     environment: false
 ''');
 

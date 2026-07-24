@@ -18,8 +18,7 @@ class ReleaseDirectoryService {
     final root = basePath ?? Directory.current.path;
     String baseOutputDir = p.join('build', 'release');
     
-    bool orgYear = true;
-    bool orgMonth = true;
+    bool orgDate = true;
     bool orgEnv = true;
 
     final file = File(p.join(root, _configPath));
@@ -36,9 +35,8 @@ class ReleaseDirectoryService {
 
           if (rm['organize_by'] is YamlMap) {
             final org = rm['organize_by'];
-            orgYear = org['year'] == true;
-            orgMonth = org['month'] == true;
-            orgEnv = org['environment'] == true;
+            orgDate = org['date'] ?? true;
+            orgEnv = org['environment'] ?? true;
           }
         }
       } catch (_) {
@@ -49,12 +47,8 @@ class ReleaseDirectoryService {
     final now = DateTime.now();
     final pathSegments = <String>[baseOutputDir];
 
-    if (orgYear) {
-      pathSegments.add(DateFormat('yyyy').format(now));
-    }
-    
-    if (orgMonth) {
-      pathSegments.add(DateFormat('MMMM').format(now));
+    if (orgDate) {
+      pathSegments.add(DateFormat('dd_MM_yyyy').format(now));
     }
     
     if (orgEnv) {
