@@ -50,7 +50,7 @@ class InitCommand extends Command<int> {
 release_manager:
   enabled: true
   output_directory: release
-  template: "${projectName}_{date}_{env}_{build}"
+  template: "${projectName}_{date}_{env}_{counter}"
   build_counter:
     mode: daily
   environment:
