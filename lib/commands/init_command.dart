@@ -34,32 +34,29 @@ class InitCommand extends Command<int> {
       }
     }
 
-    // Generate default configuration
     final defaultConfig = '''
-# flutter_release_manager configuration
-
-project_name: "example_project"
-versioning:
-  strategy: "standard" # standard, semantic, date
-
-platforms:
-  ios:
+release_manager:
+  enabled: true
+  output_directory: release
+  template: "{project}_{date}_{env}_{build}"
+  build_counter:
+    mode: daily
+  environment:
+    source: auto
+  rename:
+    apk: true
+    aab: true
+    ipa: true
+  organize_by:
+    year: true
+    month: true
+    environment: true
+  checksum:
+    sha256: true
+  metadata:
     enabled: true
-    export_options_plist: "ios/ExportOptions.plist"
-  android:
-    enabled: true
-    build_type: "appbundle" # appbundle, apk
-  macos:
-    enabled: false
-  windows:
-    enabled: false
-  linux:
-    enabled: false
-
-hooks:
-  pre_build: []
-  post_build: []
 ''';
+
 
     try {
       // Write the file
@@ -86,12 +83,17 @@ hooks:
         throw const ReleaseManagerException('Configuration must be a valid YAML map.');
       }
       
-      if (!doc.containsKey('project_name')) {
-        throw const ReleaseManagerException('Missing required field: project_name');
+      if (!doc.containsKey('release_manager')) {
+        throw const ReleaseManagerException('Missing required root key: release_manager');
+      }
+
+      final releaseManagerConfig = doc['release_manager'];
+      if (releaseManagerConfig is! YamlMap) {
+        throw const ReleaseManagerException('release_manager must be a map.');
       }
       
-      if (!doc.containsKey('platforms')) {
-        throw const ReleaseManagerException('Missing required field: platforms');
+      if (!releaseManagerConfig.containsKey('enabled')) {
+        throw const ReleaseManagerException('Missing required field: release_manager.enabled');
       }
     } catch (e) {
       if (e is ReleaseManagerException) rethrow;
