@@ -38,7 +38,7 @@ class ProcessService {
   /// Optionally sets the [workingDirectory].
   /// Returns the standard output of the process if successful.
   /// Throws an exception if the process fails.
-  Future<String> run(
+  Future<ProcessResult> run(
     String executable,
     List<String> arguments, {
     String? workingDirectory,
@@ -53,14 +53,7 @@ class ProcessService {
         runInShell: true,
       );
 
-      if (result.exitCode != 0) {
-        throw ReleaseManagerException(
-          'Command failed: $executable ${arguments.join(' ')}',
-          details: result.stderr.toString().trim(),
-        );
-      }
-
-      return result.stdout.toString().trim();
+      return result;
     } on ProcessException catch (e) {
       throw ReleaseManagerException(
         'Process failed to start: $executable',
