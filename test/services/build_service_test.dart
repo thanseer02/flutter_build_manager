@@ -4,18 +4,25 @@ import 'package:mocktail/mocktail.dart';
 
 import 'package:flutter_release_manager/services/build_service.dart';
 import 'package:flutter_release_manager/services/process_service.dart';
+import 'package:flutter_release_manager/services/flutter_sdk_service.dart';
 
 class MockProcessService extends Mock implements ProcessService {}
+class MockFlutterSdkService extends Mock implements FlutterSdkService {}
 
 void main() {
   group('BuildService', () {
     late BuildService buildService;
     late MockProcessService mockProcessService;
+    late MockFlutterSdkService mockFlutterSdkService;
     late String testDir;
 
     setUp(() {
       mockProcessService = MockProcessService();
-      buildService = BuildService(processService: mockProcessService);
+      mockFlutterSdkService = MockFlutterSdkService();
+      buildService = BuildService(
+        processService: mockProcessService,
+        flutterSdkService: mockFlutterSdkService,
+      );
       
       final dir = Directory.systemTemp.createTempSync('build_service_test_');
       testDir = dir.path;
@@ -36,8 +43,15 @@ void main() {
       File('$testDir/pubspec.yaml').writeAsStringSync('name: test_app');
       File('$testDir/flutter_release.yaml').writeAsStringSync('release_manager:');
       
-      when(() => mockProcessService.run('flutter', ['--version']))
-          .thenAnswer((_) async => ProcessResult(0, 0, 'Flutter 3.30.0', ''));
+      when(() => mockFlutterSdkService.getSdkInfo())
+          .thenAnswer((_) async => FlutterSdkInfo(
+                executablePath: 'flutter',
+                version: '3.30.0',
+                channel: 'stable',
+                dartVersion: '3.7.0',
+                engineRevision: '12345',
+                frameworkRevision: '12345',
+              ));
     }
 
     test('fails if pubspec.yaml is missing', () async {
@@ -58,12 +72,12 @@ void main() {
       File('$testDir/pubspec.yaml').writeAsStringSync('name: test_app');
       File('$testDir/flutter_release.yaml').writeAsStringSync('release_manager:');
       
-      when(() => mockProcessService.run('flutter', ['--version']))
-          .thenAnswer((_) async => ProcessResult(0, 1, '', 'Command not found'));
+      when(() => mockFlutterSdkService.getSdkInfo())
+          .thenThrow(Exception('Command not found'));
 
       final result = await buildService.executeBuild('apk');
       expect(result.isSuccess, isFalse);
-      expect(result.errorMessage, contains('Flutter is not installed'));
+      expect(result.errorMessage, contains('Command not found'));
     });
 
     test('successfully builds apk and verifies artifact exists', () async {

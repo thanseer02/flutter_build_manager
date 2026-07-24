@@ -55,7 +55,8 @@ class BuildService {
       
       buildArgs.addAll(additionalArgs);
 
-      final result = await _processService.run('flutter', buildArgs);
+      final sdkInfo = await _flutterSdkService.getSdkInfo();
+      final result = await _processService.run(sdkInfo.executablePath, buildArgs);
 
       if (result.exitCode != 0) {
         return BuildResultModel(
@@ -97,13 +98,7 @@ class BuildService {
   }
 
   Future<void> _validateFlutterInstallation() async {
-    try {
-      final result = await _processService.run('flutter', ['--version']);
-      if (result.exitCode != 0) {
-        throw const ReleaseManagerException('Flutter installation validation failed.');
-      }
-    } catch (e) {
-      throw ReleaseManagerException('Flutter is not installed or not in PATH.', details: e.toString());
-    }
+    // getSdkInfo internally validates the installation and throws if missing.
+    await _flutterSdkService.getSdkInfo();
   }
 }
