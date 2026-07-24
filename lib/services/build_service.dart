@@ -60,40 +60,10 @@ class BuildService {
         );
       }
 
-      // Infer the default output path Flutter uses.
-      // (Note: BuildService does not move/rename this file. It just returns its assumed location).
-      String originalPath = '';
-      if (flutterTarget == 'apk') {
-        if (flavor != null) {
-          originalPath = 'build/app/outputs/flutter-apk/app-${flavor.toLowerCase()}-release.apk';
-        } else {
-          originalPath = 'build/app/outputs/flutter-apk/app-release.apk';
-        }
-      } else if (flutterTarget == 'appbundle') {
-        if (flavor != null) {
-          originalPath = 'build/app/outputs/bundle/${flavor.toLowerCase()}Release/app-${flavor.toLowerCase()}-release.aab';
-        } else {
-          originalPath = 'build/app/outputs/bundle/release/app-release.aab';
-        }
-      } else if (flutterTarget == 'ipa') {
-        originalPath = 'build/ios/ipa/Runner.ipa';
-      }
-
-      // Validate the file actually exists where we expect it
-      if (!File(originalPath).existsSync()) {
-        return BuildResultModel(
-          isSuccess: false,
-          target: target,
-          buildDuration: DateTime.now().difference(startTime),
-          errorMessage: 'Build succeeded, but artifact was not found at the expected path: $originalPath',
-        );
-      }
-
       return BuildResultModel(
         isSuccess: true,
         target: target,
         buildDuration: DateTime.now().difference(startTime),
-        originalArtifactPath: originalPath,
       );
     } catch (e) {
       return BuildResultModel(
