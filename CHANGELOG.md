@@ -1,3 +1,6 @@
+## 1.0.20
+* Update README build command example to explicitly include the `--env` flag.
+
 ## 1.0.19
 * Fix bug in `init` command where the default generated config template incorrectly used the unsupported `{build}` placeholder instead of `{counter}`.
 
