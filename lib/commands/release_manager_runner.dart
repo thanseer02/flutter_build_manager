@@ -28,14 +28,11 @@ import 'doctor_command.dart';
 
 /// The main CommandRunner for the flutter_release_manager CLI.
 class ReleaseManagerRunner extends CommandRunner<int> {
-  final ReleaseManagerLogger _logger;
-
   /// Creates a [ReleaseManagerRunner].
   ReleaseManagerRunner({
     required ReleaseManagerLogger logger,
     required ProcessService processService,
-  })  : _logger = logger,
-        super(
+  })  : super(
           'flutter_release',
           'A production-ready open-source Dart CLI package that manages Flutter releases.',
         ) {

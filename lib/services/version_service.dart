@@ -62,6 +62,8 @@ class VersionService {
         }
       }
 
+      _logger.info('Detected version: $version+$buildNumber for project: $projectName');
+
       return VersionModel(
         projectName: projectName,
         version: version,
