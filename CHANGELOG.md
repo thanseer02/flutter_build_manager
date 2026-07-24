@@ -1,3 +1,6 @@
+## 1.0.21
+* Fix bug in `init` command where the default generated output directory was `release` instead of `build/release` to match documentation.
+
 ## 1.0.20
 * Update README build command example to explicitly include the `--env` flag.
 

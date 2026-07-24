@@ -49,7 +49,7 @@ class InitCommand extends Command<int> {
     final defaultConfig = '''
 release_manager:
   enabled: true
-  output_directory: release
+  output_directory: build/release
   template: "${projectName}_{date}_{env}_{counter}"
   build_counter:
     mode: daily
