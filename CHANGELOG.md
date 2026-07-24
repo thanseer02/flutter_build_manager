@@ -1,3 +1,6 @@
+## 1.0.18
+* Update README to fix build command syntax to explicitly include the mandatory `-t` target flag.
+
 ## 1.0.17
 * Rewrite README to simplify documentation and emphasize `dart run` usage over global installation.
 

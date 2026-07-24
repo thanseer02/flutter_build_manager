@@ -49,7 +49,7 @@ dart run flutter_build_manager preview
 ### 3. Build your release!
 Ready to compile? Run the build command for your target (`apk`, `aab`, or `ipa`):
 ```bash
-dart run flutter_build_manager build apk
+dart run flutter_build_manager build -t apk
 ```
 
 ---
