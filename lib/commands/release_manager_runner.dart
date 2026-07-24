@@ -4,6 +4,7 @@ import 'package:mason_logger/mason_logger.dart';
 
 import '../utils/logger.dart';
 import '../services/process_service.dart';
+import '../services/version_service.dart';
 
 import 'build_command.dart';
 import 'init_command.dart';
@@ -40,12 +41,14 @@ class ReleaseManagerRunner extends CommandRunner<int> {
         negatable: false,
       );
 
+    final versionService = VersionService(logger: logger);
+
     addCommand(InitCommand(logger: logger));
     addCommand(BuildCommand(logger: logger, processService: processService));
     addCommand(PreviewCommand(logger: logger));
     addCommand(ConfigCommand(logger: logger));
     addCommand(ResetCommand(logger: logger));
-    addCommand(VersionCommand(logger: logger));
+    addCommand(VersionCommand(logger: logger, versionService: versionService));
     addCommand(CleanCommand(logger: logger, processService: processService));
     addCommand(DoctorCommand(logger: logger, processService: processService));
   }

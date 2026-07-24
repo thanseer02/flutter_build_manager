@@ -34,11 +34,32 @@ class InitCommand extends Command<int> {
       }
     }
 
+    // Detect project name from pubspec.yaml
+    final pubspecFile = File('pubspec.yaml');
+    String projectName = 'unknown_project';
+    
+    if (!pubspecFile.existsSync()) {
+      throw const ReleaseManagerException('pubspec.yaml not found in the current directory. Are you in a Flutter project?');
+    }
+
+    try {
+      final pubspecContent = pubspecFile.readAsStringSync();
+      final pubspecYaml = loadYaml(pubspecContent);
+      if (pubspecYaml is YamlMap && pubspecYaml.containsKey('name')) {
+        projectName = pubspecYaml['name'] as String;
+      } else {
+        throw const ReleaseManagerException('Could not find "name" field in pubspec.yaml.');
+      }
+    } catch (e) {
+      if (e is ReleaseManagerException) rethrow;
+      throw ReleaseManagerException('Failed to parse pubspec.yaml safely', details: e.toString());
+    }
+
     final defaultConfig = '''
 release_manager:
   enabled: true
   output_directory: release
-  template: "{project}_{date}_{env}_{build}"
+  template: "${projectName}_{date}_{env}_{build}"
   build_counter:
     mode: daily
   environment:
@@ -56,7 +77,6 @@ release_manager:
   metadata:
     enabled: true
 ''';
-
 
     try {
       // Write the file
