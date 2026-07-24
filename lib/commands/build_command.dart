@@ -1,26 +1,21 @@
 import 'package:args/command_runner.dart';
-
-import '../utils/logger.dart';
-import '../services/process_service.dart';
+import '../services/pipeline/release_pipeline_service.dart';
 
 /// The `build` command for flutter_release_manager.
 ///
 /// This command handles triggering Flutter builds for various platforms.
 class BuildCommand extends Command<int> {
-  final ReleaseManagerLogger _logger;
-  final ProcessService _processService;
+  final ReleasePipelineService _pipelineService;
 
   /// Creates a [BuildCommand].
   BuildCommand({
-    required ReleaseManagerLogger logger,
-    required ProcessService processService,
-  })  : _logger = logger,
-        _processService = processService {
+    required ReleasePipelineService pipelineService,
+  }) : _pipelineService = pipelineService {
     argParser.addOption(
       'target',
       abbr: 't',
-      help: 'The target platform to build for (e.g., macos, windows, linux, apk, ipa).',
-      allowed: ['macos', 'windows', 'linux', 'apk', 'ipa'],
+      help: 'The target platform to build for (e.g., apk, aab, ipa).',
+      allowed: ['apk', 'aab', 'ipa'],
       mandatory: true,
     );
   }
@@ -29,24 +24,28 @@ class BuildCommand extends Command<int> {
   String get name => 'build';
 
   @override
-  String get description => 'Builds the Flutter application for a specific target.';
+  String get description => 'Builds the Flutter application and organizes the release artifacts.';
 
   @override
   Future<int> run() async {
     final target = argResults?['target'] as String?;
     if (target == null) {
-      _logger.err('Target is required.');
       return 1;
     }
-
-    _logger.info('Starting build for target: $target');
+    
+    // We get flavor and env from the global args
+    final flavor = globalResults?['flavor'] as String?;
+    final envArg = globalResults?['env'] as String?;
 
     try {
-      await _processService.run('flutter', ['build', target]);
-      _logger.success('Build completed successfully for $target.');
+      await _pipelineService.runPipeline(
+        target: target,
+        argResults: globalResults,
+        flavor: flavor,
+        envArg: envArg,
+      );
       return 0;
     } catch (e) {
-      _logger.err('Build failed: $e');
       return 1;
     }
   }

@@ -9,6 +9,15 @@ import '../services/project_service.dart';
 import '../services/environment/environment_service.dart';
 import '../services/build_counter_service.dart';
 import '../services/filename_template_service.dart';
+import '../services/flutter_sdk_service.dart';
+import '../services/build_service.dart';
+import '../services/artifacts/artifact_locator_service.dart';
+import '../services/artifacts/artifact_rename_service.dart';
+import '../services/release_directory_service.dart';
+import '../services/metadata_service.dart';
+import '../services/checksum_service.dart';
+import '../services/logger_service.dart';
+import '../services/pipeline/release_pipeline_service.dart';
 
 import 'build_command.dart';
 import 'init_command.dart';
@@ -62,9 +71,38 @@ class ReleaseManagerRunner extends CommandRunner<int> {
     final environmentService = EnvironmentService(logger: logger);
     final buildCounterService = BuildCounterService();
     final filenameTemplateService = FilenameTemplateService();
+    
+    // New services
+    final flutterSdkService = FlutterSdkService(processService: processService);
+    final buildService = BuildService(
+      processService: processService,
+      flutterSdkService: flutterSdkService,
+    );
+    final artifactLocatorService = ArtifactLocatorService();
+    final artifactRenameService = ArtifactRenameService();
+    final releaseDirectoryService = ReleaseDirectoryService();
+    final metadataService = MetadataService();
+    final checksumService = ChecksumService();
+    final fileLogger = LoggerService();
+
+    final pipelineService = ReleasePipelineService(
+      uiLogger: logger,
+      projectService: projectService,
+      versionService: versionService,
+      environmentService: environmentService,
+      buildCounterService: buildCounterService,
+      filenameTemplateService: filenameTemplateService,
+      buildService: buildService,
+      artifactLocatorService: artifactLocatorService,
+      artifactRenameService: artifactRenameService,
+      releaseDirectoryService: releaseDirectoryService,
+      metadataService: metadataService,
+      checksumService: checksumService,
+      fileLogger: fileLogger,
+    );
 
     addCommand(InitCommand(logger: logger));
-    addCommand(BuildCommand(logger: logger, processService: processService));
+    addCommand(BuildCommand(pipelineService: pipelineService));
     addCommand(PreviewCommand(
       logger: logger,
       projectService: projectService,
