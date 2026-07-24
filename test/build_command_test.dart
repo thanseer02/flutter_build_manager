@@ -1,28 +1,30 @@
 import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:flutter_release_manager/src/commands/build_command.dart';
-import 'package:flutter_release_manager/src/core/logger.dart';
-import 'package:mason_logger/mason_logger.dart';
+import 'package:flutter_release_manager/commands/build_command.dart';
+import 'package:flutter_release_manager/utils/logger.dart';
+import 'package:flutter_release_manager/services/process_service.dart';
 
-class MockLogger extends Mock implements AppLogger {}
-class MockProgress extends Mock implements Progress {}
+class MockLogger extends Mock implements ReleaseManagerLogger {}
+class MockProcessService extends Mock implements ProcessService {}
 
 void main() {
   group('BuildCommand', () {
     late MockLogger mockLogger;
-    late MockProgress mockProgress;
+    late MockProcessService mockProcessService;
     late BuildCommand command;
 
     setUp(() {
       mockLogger = MockLogger();
-      mockProgress = MockProgress();
+      mockProcessService = MockProcessService();
       
       when(() => mockLogger.info(any())).thenReturn(null);
-      when(() => mockLogger.progress(any())).thenReturn(mockProgress);
-      when(() => mockProgress.complete(any())).thenReturn(null);
-      when(() => mockProgress.fail(any())).thenReturn(null);
+      when(() => mockLogger.success(any())).thenReturn(null);
+      when(() => mockLogger.err(any())).thenReturn(null);
 
-      command = BuildCommand(logger: mockLogger);
+      command = BuildCommand(
+        logger: mockLogger,
+        processService: mockProcessService,
+      );
     });
 
     test('name and description are correct', () {

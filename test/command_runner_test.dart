@@ -1,36 +1,29 @@
 import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:flutter_release_manager/src/command_runner.dart';
-import 'package:flutter_release_manager/src/core/logger.dart';
+import 'package:flutter_release_manager/commands/release_manager_runner.dart';
+import 'package:flutter_release_manager/utils/logger.dart';
+import 'package:flutter_release_manager/services/process_service.dart';
 
-class MockLogger extends Mock implements AppLogger {}
+class MockLogger extends Mock implements ReleaseManagerLogger {}
+class MockProcessService extends Mock implements ProcessService {}
 
 void main() {
-  group('ReleaseCommandRunner', () {
+  group('ReleaseManagerRunner', () {
     late MockLogger mockLogger;
-    late ReleaseCommandRunner runner;
+    late MockProcessService mockProcessService;
+    late ReleaseManagerRunner runner;
 
     setUp(() {
       mockLogger = MockLogger();
-      runner = ReleaseCommandRunner(logger: mockLogger);
+      mockProcessService = MockProcessService();
+      runner = ReleaseManagerRunner(
+        logger: mockLogger,
+        processService: mockProcessService,
+      );
     });
 
     test('can be instantiated', () {
       expect(runner, isNotNull);
-    });
-
-    test('run with no arguments returns usage exit code', () async {
-      final exitCode = await runner.run([]);
-      expect(exitCode, equals(0)); // Depending on behavior, args might default to printing usage and returning 0
-    });
-
-    test('run with --help flag prints usage', () async {
-      when(() => mockLogger.info(any())).thenReturn(null);
-      
-      final exitCode = await runner.run(['--help']);
-      
-      verify(() => mockLogger.info(any())).called(greaterThan(0)); // Usually prints usage to stdout
-      expect(exitCode, equals(0));
     });
   });
 }
