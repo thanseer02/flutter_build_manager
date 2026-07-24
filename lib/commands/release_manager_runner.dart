@@ -33,7 +33,7 @@ class ReleaseManagerRunner extends CommandRunner<int> {
     required ReleaseManagerLogger logger,
     required ProcessService processService,
   })  : super(
-          'flutter_release',
+          'flutter_build_manager',
           'A production-ready open-source Dart CLI package that manages Flutter releases.',
         ) {
     argParser

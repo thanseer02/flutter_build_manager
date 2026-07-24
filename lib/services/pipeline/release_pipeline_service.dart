@@ -133,9 +133,9 @@ class ReleasePipelineService {
     // Note: We need to pull template from config, but FilenameTemplateService can do it or we assume default if we don't have it here. 
     // Wait, FilenameTemplateService doesn't read the config directly in generateFilename. 
     // We should probably read it or use a default. For now, let's use a safe default template.
-    // In a full implementation, we'd read `flutter_release.yaml`.
+    // In a full implementation, we'd read `flutter_build_manager.yaml`.
     String template = '{project}_{date}_{env}_{counter}';
-    final configFile = File('flutter_release.yaml');
+    final configFile = File('flutter_build_manager.yaml');
     if (configFile.existsSync()) {
       // Very basic read just for template, in real code use config service
       final content = configFile.readAsStringSync();

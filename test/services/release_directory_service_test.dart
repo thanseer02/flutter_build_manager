@@ -35,7 +35,7 @@ void main() {
     });
 
     test('uses custom output directory from config', () async {
-      final configFile = File(p.join(testDir, 'flutter_release.yaml'));
+      final configFile = File(p.join(testDir, 'flutter_build_manager.yaml'));
       configFile.writeAsStringSync('''
 release_manager:
   output_directory: custom_builds
@@ -48,7 +48,7 @@ release_manager:
     });
 
     test('disables year and month organization from config', () async {
-      final configFile = File(p.join(testDir, 'flutter_release.yaml'));
+      final configFile = File(p.join(testDir, 'flutter_build_manager.yaml'));
       configFile.writeAsStringSync('''
 release_manager:
   output_directory: my_releases
@@ -66,7 +66,7 @@ release_manager:
     });
 
     test('creates flat structure if all organization is false', () async {
-      final configFile = File(p.join(testDir, 'flutter_release.yaml'));
+      final configFile = File(p.join(testDir, 'flutter_build_manager.yaml'));
       configFile.writeAsStringSync('''
 release_manager:
   output_directory: flat_out

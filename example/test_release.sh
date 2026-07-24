@@ -12,13 +12,13 @@ echo "2. Getting dependencies..."
 fvm flutter pub get
 
 echo "3. Running doctor..."
-fvm dart run flutter_build_manager:flutter_release doctor
+fvm dart run flutter_build_manager:flutter_build_manager doctor
 
 echo "4. Running preview..."
-fvm dart run flutter_build_manager:flutter_release preview
+fvm dart run flutter_build_manager:flutter_build_manager preview
 
 echo "5. Building APK..."
-fvm dart run flutter_build_manager:flutter_release build --target apk
+fvm dart run flutter_build_manager:flutter_build_manager build --target apk
 
 echo "=========================================="
 echo "Verification"

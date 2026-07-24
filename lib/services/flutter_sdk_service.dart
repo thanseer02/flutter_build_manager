@@ -36,8 +36,8 @@ class FlutterSdkService {
       isFvm = true;
       isProjectFvm = true;
     } else {
-      // 4. Custom executable path from flutter_release.yaml (Checked before System)
-      final configPath = p.join(root, 'flutter_release.yaml');
+      // 4. Custom executable path from flutter_build_manager.yaml (Checked before System)
+      final configPath = p.join(root, 'flutter_build_manager.yaml');
       if (File(configPath).existsSync()) {
         try {
           final doc = loadYaml(File(configPath).readAsStringSync());

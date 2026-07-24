@@ -52,7 +52,7 @@ class PreviewCommand extends Command<int> {
       String outputDir = 'release';
 
       // Load config if exists
-      final configFile = File('flutter_release.yaml');
+      final configFile = File('flutter_build_manager.yaml');
       if (configFile.existsSync()) {
         try {
           final doc = loadYaml(configFile.readAsStringSync());

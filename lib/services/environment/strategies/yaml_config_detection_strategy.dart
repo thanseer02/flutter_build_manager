@@ -4,14 +4,14 @@ import 'package:yaml/yaml.dart';
 
 import 'package:flutter_build_manager/services/environment/environment_detection_strategy.dart';
 
-/// Strategy to detect the environment from the flutter_release.yaml configuration.
+/// Strategy to detect the environment from the flutter_build_manager.yaml configuration.
 class YamlConfigDetectionStrategy implements EnvironmentDetectionStrategy {
   final String configPath;
 
-  YamlConfigDetectionStrategy({this.configPath = 'flutter_release.yaml'});
+  YamlConfigDetectionStrategy({this.configPath = 'flutter_build_manager.yaml'});
 
   @override
-  String get name => 'flutter_release.yaml';
+  String get name => 'flutter_build_manager.yaml';
 
   @override
   Future<String?> detect(ArgResults? argResults) async {

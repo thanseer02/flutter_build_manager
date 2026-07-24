@@ -53,10 +53,10 @@ class EnvironmentService {
       'Could not automatically detect the build environment.',
       details: 'No environment could be resolved from flags or configurations.\n\n'
           'To fix this, please provide the environment manually using one of the following methods:\n'
-          '  1. Pass the --env flag: flutter_release build --env=STAGING\n'
+          '  1. Pass the --env flag: flutter_build_manager build --env=STAGING\n'
           '  2. Provide a flavor: --flavor=dev\n'
           '  3. Use dart defines: --dart-define=ENV=PROD\n'
-          '  4. Specify a fallback in flutter_release.yaml under release_manager > environment > source.',
+          '  4. Specify a fallback in flutter_build_manager.yaml under release_manager > environment > source.',
     );
   }
 }

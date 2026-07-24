@@ -95,13 +95,13 @@ Transform your messy release process into a professional pipeline in seconds:
 
 ```bash
 # 1. Initialize the configuration
-flutter_release init
+flutter_build_manager init
 
 # 2. Preview what a release will look like (does not trigger a build)
-flutter_release preview
+flutter_build_manager preview
 
 # 3. Build and package your release!
-flutter_release build apk
+flutter_build_manager build apk
 ```
 
 ---
@@ -137,10 +137,10 @@ graph TD
 Integrating `flutter_build_manager` into a legacy project is completely non-destructive and requires zero code changes.
 
 1. **Open project**: Navigate to your Flutter project root in your terminal.
-2. **Run init**: Execute `flutter_release init`.
-3. **Review**: Check the newly generated `flutter_release.yaml` and adjust preferences.
-4. **Run preview**: Execute `flutter_release preview` to verify filename generation.
-5. **Build release**: Execute `flutter_release build apk`.
+2. **Run init**: Execute `flutter_build_manager init`.
+3. **Review**: Check the newly generated `flutter_build_manager.yaml` and adjust preferences.
+4. **Run preview**: Execute `flutter_build_manager preview` to verify filename generation.
+5. **Build release**: Execute `flutter_build_manager build apk`.
 
 ---
 
@@ -155,7 +155,7 @@ my_app/
   │    ├── fvm_config.json
   │    └── flutter_sdk/
   ├── pubspec.yaml
-  └── flutter_release.yaml
+  └── flutter_build_manager.yaml
 ```
 
 The CLI will **automatically** detect `.fvm/fvm_config.json` and seamlessly route all compilation commands through your local FVM SDK. 
@@ -171,14 +171,14 @@ The manager automatically tags your builds with an environment (e.g. `LIVE`, `DE
 
 1. **Flutter Flavors**: If you pass `--flavor dev`, the environment is automatically set to `DEV`.
 2. **Dart Defines**: If you pass `--dart-define=ENV=QA`, it resolves to `QA`.
-3. **Configuration**: Uses the default configured in `flutter_release.yaml`.
+3. **Configuration**: Uses the default configured in `flutter_build_manager.yaml`.
 4. **Manual override**: Passing `--env=STAGING` overrides everything else.
 
 ---
 
 ## Configuration
 
-The `flutter_release.yaml` file controls the entire pipeline behavior. 
+The `flutter_build_manager.yaml` file controls the entire pipeline behavior. 
 
 ```yaml
 release_manager:
@@ -204,7 +204,7 @@ release_manager:
 
 ## Filename Templates
 
-Customize your artifact filenames using dynamic placeholders inside your `flutter_release.yaml` template string.
+Customize your artifact filenames using dynamic placeholders inside your `flutter_build_manager.yaml` template string.
 
 | Placeholder | Description | Example |
 |---|---|---|
@@ -258,14 +258,14 @@ my_app/
 
 | Command | Description |
 |---|---|
-| `flutter_release init` | Scaffolds the `flutter_release.yaml` configuration in your project. |
-| `flutter_release preview` | Simulates a build outputting the exact filenames and paths without actually compiling anything. |
-| `flutter_release build <target>` | Triggers the complete compilation and packaging pipeline for `apk`, `aab`, or `ipa`. |
-| `flutter_release version` | Displays the current CLI version and your project's parsed pubspec version. |
-| `flutter_release config` | Generates or modifies the configuration securely. |
-| `flutter_release reset` | Safely resets build counters. |
-| `flutter_release clean` | Safely cleans generated output paths. |
-| `flutter_release doctor` | Validates your system dependencies against the CLI package. |
+| `flutter_build_manager init` | Scaffolds the `flutter_build_manager.yaml` configuration in your project. |
+| `flutter_build_manager preview` | Simulates a build outputting the exact filenames and paths without actually compiling anything. |
+| `flutter_build_manager build <target>` | Triggers the complete compilation and packaging pipeline for `apk`, `aab`, or `ipa`. |
+| `flutter_build_manager version` | Displays the current CLI version and your project's parsed pubspec version. |
+| `flutter_build_manager config` | Generates or modifies the configuration securely. |
+| `flutter_build_manager reset` | Safely resets build counters. |
+| `flutter_build_manager clean` | Safely cleans generated output paths. |
+| `flutter_build_manager doctor` | Validates your system dependencies against the CLI package. |
 
 ---
 
@@ -301,7 +301,7 @@ DEV  -> 001
 
 > [!WARNING]  
 > **Malformed YAML / Missing pubspec.yaml**
-> If your `flutter_release.yaml` or `pubspec.yaml` is malformed, the pipeline will immediately halt. Run your YAML through a linter.
+> If your `flutter_build_manager.yaml` or `pubspec.yaml` is malformed, the pipeline will immediately halt. Run your YAML through a linter.
 
 > [!WARNING]  
 > **Permission denied**
@@ -313,7 +313,7 @@ DEV  -> 001
 
 > [!WARNING]  
 > **Invalid template**
-> An unknown variable string like `{unknown}` was encountered in the `template` key. Review your `flutter_release.yaml`.
+> An unknown variable string like `{unknown}` was encountered in the `template` key. Review your `flutter_build_manager.yaml`.
 
 ---
 
@@ -323,7 +323,7 @@ DEV  -> 001
 No. It only reads your `pubspec.yaml` and creates a `.build_release/` and `release/` folder which you can safely add to your `.gitignore`.
 
 **2. Can I customize filenames?**
-Absolutely. Adjust the `template` key in `flutter_release.yaml`.
+Absolutely. Adjust the `template` key in `flutter_build_manager.yaml`.
 
 **3. Does it work with FVM?**
 Yes! First-class FVM support is natively built in.
@@ -332,7 +332,7 @@ Yes! First-class FVM support is natively built in.
 Yes, simply remove `{counter}` from your template, though you may encounter file overwrites if you build multiple times in the same minute without `{time}`.
 
 **5. Does it support CI/CD?**
-Yes. Since it is a headless Dart CLI, it is highly recommended to run `flutter_release build apk` inside GitHub Actions or GitLab CI.
+Yes. Since it is a headless Dart CLI, it is highly recommended to run `flutter_build_manager build apk` inside GitHub Actions or GitLab CI.
 
 **6. Can I upload automatically?**
 Not yet, but cloud upload integrations are on the roadmap!

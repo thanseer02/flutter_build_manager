@@ -17,16 +17,16 @@ class InitCommand extends Command<int> {
   String get name => 'init';
 
   @override
-  String get description => 'Initializes flutter_release configuration in the current project.';
+  String get description => 'Initializes flutter_build_manager configuration in the current project.';
 
   @override
   Future<int> run() async {
-    _logger.info('Initializing flutter_release configuration...');
+    _logger.info('Initializing flutter_build_manager configuration...');
 
-    final configFile = File('flutter_release.yaml');
+    final configFile = File('flutter_build_manager.yaml');
 
     if (configFile.existsSync()) {
-      _logger.warn('Configuration file already exists: flutter_release.yaml');
+      _logger.warn('Configuration file already exists: flutter_build_manager.yaml');
       final shouldOverwrite = _logger.confirm('Do you want to overwrite it?', defaultValue: false);
       
       if (!shouldOverwrite) {
@@ -76,7 +76,7 @@ release_manager:
       // Validate the newly created configuration to ensure it parses correctly
       _validateConfiguration(defaultConfig);
 
-      _logger.success('Initialization complete. Created flutter_release.yaml');
+      _logger.success('Initialization complete. Created flutter_build_manager.yaml');
       return 0;
     } on ReleaseManagerException catch (e) {
       _logger.err('Validation failed after creation: ${e.message}');

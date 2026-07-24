@@ -1,3 +1,6 @@
+## 1.0.16
+* Rename executable command and configuration file from `flutter_release` to `flutter_build_manager`.
+
 ## 1.0.15
 * Update README to reflect new single date folder structure and new `build/release` default path.
 

@@ -28,7 +28,7 @@ void main() {
       final dir = Directory.systemTemp.createTempSync('build_service_test_');
       testDir = dir.path;
       
-      // Navigate to temp dir so local file checks (pubspec/flutter_release.yaml) use this dir
+      // Navigate to temp dir so local file checks (pubspec/flutter_build_manager.yaml) use this dir
       Directory.current = testDir;
     });
 
@@ -42,7 +42,7 @@ void main() {
 
     void setupValidEnvironment() {
       File('$testDir/pubspec.yaml').writeAsStringSync('name: test_app');
-      File('$testDir/flutter_release.yaml').writeAsStringSync('release_manager:');
+      File('$testDir/flutter_build_manager.yaml').writeAsStringSync('release_manager:');
       
       when(() => mockFlutterSdkService.getSdkInfo())
           .thenAnswer((_) async => FlutterSdkInfo(
@@ -63,17 +63,17 @@ void main() {
       expect(result.errorMessage, contains('pubspec.yaml not found'));
     });
 
-    test('fails if flutter_release.yaml is missing', () async {
+    test('fails if flutter_build_manager.yaml is missing', () async {
       File('$testDir/pubspec.yaml').writeAsStringSync('name: test_app');
       
       final result = await buildService.executeBuild('apk');
       expect(result.isSuccess, isFalse);
-      expect(result.errorMessage, contains('flutter_release.yaml not found'));
+      expect(result.errorMessage, contains('flutter_build_manager.yaml not found'));
     });
 
     test('fails if Flutter validation fails', () async {
       File('$testDir/pubspec.yaml').writeAsStringSync('name: test_app');
-      File('$testDir/flutter_release.yaml').writeAsStringSync('release_manager:');
+      File('$testDir/flutter_build_manager.yaml').writeAsStringSync('release_manager:');
       
       when(() => mockFlutterSdkService.getSdkInfo())
           .thenThrow(Exception('Command not found'));

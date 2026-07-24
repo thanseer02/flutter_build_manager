@@ -7,12 +7,12 @@ import 'package:intl/intl.dart';
 class ReleaseDirectoryService {
   final String _configPath;
 
-  ReleaseDirectoryService({String configPath = 'flutter_release.yaml'})
+  ReleaseDirectoryService({String configPath = 'flutter_build_manager.yaml'})
       : _configPath = configPath;
 
   /// Determines the release directory path based on configuration and current environment.
   /// 
-  /// By default, reads `output_directory` and `organize_by` from `flutter_release.yaml`.
+  /// By default, reads `output_directory` and `organize_by` from `flutter_build_manager.yaml`.
   /// Creates the directory on disk if it does not exist.
   Future<String> getReleaseDirectory({required String environment, String? basePath}) async {
     final root = basePath ?? Directory.current.path;

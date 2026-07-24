@@ -89,10 +89,10 @@ class BuildService {
   }
 
   Future<void> _validateConfiguration() async {
-    if (!File('flutter_release.yaml').existsSync()) {
+    if (!File('flutter_build_manager.yaml').existsSync()) {
       throw const ReleaseManagerException(
-        'Invalid configuration: flutter_release.yaml not found.',
-        details: 'Run `flutter_release init` to create the configuration file.',
+        'Invalid configuration: flutter_build_manager.yaml not found.',
+        details: 'Run `flutter_build_manager init` to create the configuration file.',
       );
     }
   }
